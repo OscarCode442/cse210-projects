@@ -1,6 +1,6 @@
 using System;
 
-public enum Priority
+public enum PriorityLevel
 {
     Low,
     Medium,
@@ -9,29 +9,24 @@ public enum Priority
 
 public class Task
 {
-    private string title;
-    private string description;
-    private DateTime dueDate;
-    private Priority priority;
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public DateTime DueDate { get; set; }
+    public PriorityLevel Priority { get; set; }
 
-    public Task(string title, string description, DateTime dueDate, Priority priority)
+    public Task(string title, string description, DateTime dueDate, PriorityLevel priority)
     {
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
+        Title = title;
+        Description = description;
+        DueDate = dueDate;
+        Priority = priority;
     }
 
-    public void SetTaskDetails(string title, string description, DateTime dueDate, Priority priority)
+    public virtual void DisplayTaskDetails()
     {
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
+        Console.WriteLine($"Title: {Title}");
+        Console.WriteLine($"Description: {Description}");
+        Console.WriteLine($"Due Date: {DueDate}");
+        Console.WriteLine($"Priority: {Priority}");
     }
-
-    public string GetTitle() => title;
-    public string GetDescription() => description;
-    public DateTime GetDueDate() => dueDate;
-    public Priority GetPriority() => priority;
 }
